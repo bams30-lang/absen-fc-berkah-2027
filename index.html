@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#142d50">
+  <meta name="description" content="Aplikasi absensi FC Berkah 2027">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>ABSEN FC BERKAH 2027</title>
+</head>
+<body>
+<header class="app-header">
+  <div class="brand-mark">FC</div>
+  <div><strong>ABSEN FC BERKAH</strong><small>ATTENDANCE · 2027</small></div>
+  <span id="networkBadge" class="network">Memeriksa…</span>
+</header>
+
+<main>
+  <section id="loginView" class="panel login-panel">
+    <div class="eyebrow">AREA ADMIN</div>
+    <h1>Masuk Admin</h1>
+    <p class="muted">Login untuk mengelola absensi FC Berkah.</p>
+    <label>Username<input id="username" autocomplete="username" placeholder="Username admin"></label>
+    <label>Password<input id="password" type="password" autocomplete="current-password" placeholder="Password admin"></label>
+    <button id="loginBtn" class="primary full">Masuk</button>
+    <p id="loginMessage" class="message" aria-live="polite"></p>
+    <p class="hint">Login memerlukan koneksi internet. Setelah masuk, data yang sudah dimuat dapat digunakan sementara saat offline.</p>
+  </section>
+
+  <section id="appView" class="hidden">
+    <div class="welcome">
+      <div><div class="eyebrow">DASHBOARD</div><h1>Absensi 2027</h1><p id="syncStatus" class="muted">Belum ada sinkronisasi</p></div>
+      <button id="logoutBtn" class="quiet">Keluar</button>
+    </div>
+
+    <section class="stats">
+      <article class="stat"><span>Total Anggota</span><b id="statMembers">—</b></article>
+      <article class="stat"><span>Hadir</span><b id="statPresent">—</b></article>
+      <article class="stat"><span>Alpha</span><b id="statAbsent">—</b></article>
+      <article class="stat"><span>Izin</span><b id="statExcused">—</b></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><div><div class="eyebrow">INPUT DATA</div><h2>Absensi Harian</h2></div><span id="pendingBadge" class="pending">0 antrean</span></div>
+      <label>Tanggal absensi<input type="date" id="attendanceDate" min="2027-01-01" max="2027-12-31" value="2027-01-01"></label>
+      <button id="loadDateBtn" class="secondary full">Tampilkan Anggota</button>
+      <div class="legend"><span><i class="dot present"></i> Hadir</span><span><i class="dot absent"></i> Alpha</span><span><i class="dot excused"></i> Izin</span><span><i class="dot holiday"></i> Libur</span></div>
+      <div id="memberList" class="member-list"><div class="empty">Pilih tanggal untuk memuat anggota.</div></div>
+      <button id="saveBtn" class="primary full" disabled>Simpan Absensi</button>
+      <p id="saveMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><div><div class="eyebrow">RINGKASAN</div><h2>Rekap Anggota</h2></div></div>
+      <div class="table-scroll"><table><thead><tr><th>Nama</th><th>Hadir</th><th>Alpha</th><th>Izin</th><th>Libur</th><th>%</th></tr></thead><tbody id="memberSummary"><tr><td colspan="6">Belum dimuat</td></tr></tbody></table></div>
+    </section>
+    <section class="panel">
+      <div class="eyebrow">PER BULAN</div><h2>Rekap Bulanan</h2>
+      <div class="table-scroll"><table><thead><tr><th>Bulan</th><th>Hadir</th><th>Alpha</th><th>Izin</th><th>Libur</th></tr></thead><tbody id="monthSummary"></tbody></table></div>
+    </section>
+    <button id="syncBtn" class="sync-fab">Sinkronkan sekarang</button>
+  </section>
+</main>
+<footer>ABSEN FC BERKAH 2027 · Data utama di Google Sheets</footer>
+<script src="./app.js"></script>
+</body>
+</html>
